@@ -1,0 +1,40 @@
+---
+title: First Post!
+author: Zak Varty
+date: '2019-10-22'
+slug: first-post
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2019-10-22T20:57:02+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+##Second level header
+example text
+
+
+```{r}
+  #Example R code
+  plot(iris)
+```
+
+
+# Adding images
+Photo by fotografierende on Unsplash
+Markdown: ![alt text here](../../img/boards.jpg)
+Markdown: ![alt text here](unsplash.jpg) 
+```{r}
+knitr::include_graphics("../../img/boards.jpg")
+knitr::include_graphics("unsplash.jpg")
+```
+
+# Adding links
+[link to other conent](../../courses)
+[link to other post](../getting-started)

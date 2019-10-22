@@ -1,0 +1,27 @@
+# Things you might want to do:
+
+1. link within your site
+  - All URLs are relative to current location _not_ project root.
+  - [link text goes here](relative path goes here)
+  - e.g. In website/content/post/___.Rmd
+    [another post](../otherpost)
+    [other content](../../courses)
+    [section on homepage](../../#about)
+    [an image](../../img/hero-academic.png) {Links to file in static/ directory}
+2. Add images
+  -There are two ways to add an image from static/img/
+  2.1 Markdown: ![alt text here](../../img/hero-academic.png)
+  2.2 knitr: knitr::include_graphics("../../img/hero-academic.png")
+
+
+3. Add data
+  - Add into bundle and use as you usually would.
+
+4. Cross-referencing
+  https://bookdown.org/yihui/bookdown/cross-references.html
+
+5. Personalise widgets
+  https://sourcethemes.com/academic/docs/page-builder/#personalizing-widgets
+
+
+
