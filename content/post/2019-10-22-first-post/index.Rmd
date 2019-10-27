@@ -37,4 +37,5 @@ knitr::include_graphics("unsplash.jpg")
 
 # Adding links
 [link to other conent](../../courses)
-[link to other post](../getting-started)
+[link to other post](../getting-started) 
+

@@ -1,8 +1,7 @@
 ---
 authors:
 - admin
-bio: My research interests include distributed robotics, mobile computing and programmable
-  matter.
+bio: A website for all parts of my life. Running, reading, baking, and worrying about uncertainty.
 education:
   courses:
   - course: PhD Statistics & Operational Research
@@ -15,11 +14,11 @@ education:
     institution: Lancaster Univerity & The University of Western Ontario
     year: 2012 - 2016
 email: "zdvarty@gmail.com"
-interests:
-- Environmental statistics 
-- Industrial statistics
-- Point processes
-- Extreme value theory
+#interests:
+#- Environmental statistics 
+#- Industrial statistics
+#- Point processes
+#- Extreme value theory
 name: Zak Varty
 organizations:
 - name: STOR-i CDT
