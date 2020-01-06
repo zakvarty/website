@@ -1,13 +1,13 @@
 ---
-title: First Post!
+title: Learning to blog with blogdown
 author: Zak Varty
-date: '2019-10-22'
-slug: first-post
-categories: []
-tags: []
-subtitle: ''
+date: '2020-01-06'
+slug: bolg-with-blogdown
+categories: [blogdown]
+tags: [R]
+subtitle: 'An experimental first post'
 summary: ''
-authors: []
+authors: [Zak Varty]
 lastmod: '2019-10-22T20:57:02+02:00'
 featured: no
 image:
@@ -16,7 +16,7 @@ image:
   preview_only: no
 projects: []
 ---
-##Second level header
+## Second level header
 example text
 
 

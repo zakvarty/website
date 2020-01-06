@@ -63,7 +63,7 @@ highlight_languages = ["r"]  # Add support for highlighting additional languages
 
 # Enable LaTeX math rendering? true/false
 #   If false, you can enable math on a per page basis as needed.
-math = false
+math = true
 
 # Enable diagram rendering? true/false
 #   If false, you can enable diagrams on a per page basis as needed.
@@ -76,8 +76,8 @@ privacy_pack = false
 
 # Enable visitors to edit pages?
 #   `repo` defines the repository URL. `editable` defines which page types can be edited.
-edit_page = {repo_url = "https://github.com/zakvarty/website/", repo_branch = "master", editable = {docs = true, page = true, post = true}}
-
+# edit_page = {repo_url = "https://github.com/zakvarty/website/", repo_branch = "master", editable = {docs = true, page = true, post = true}}
+edit_page = false
 ############################
 ## Contact details
 ##
@@ -98,7 +98,7 @@ address = {street = "A85, Faculty of Science and Technology", city = "Lancaster 
 coordinates = {latitude = "", longitude = ""}
 
 # Directions for visitors to locate you.
-directions = "Enter STOR-i CDT from Fylde Avenue and turn right. _Alternatively, follow the lost students looking for the Hannaford lab._"
+directions = ""
 
 # Office hours
 # A list of your office hours. To remove, set to an empty list `[]`. ["Monday 10:00 to 13:00", "Wednesday 09:00 to 10:00"]

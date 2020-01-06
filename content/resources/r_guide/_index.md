@@ -1,23 +1,25 @@
 ---
-date: "2018-09-09T00:00:00Z"
+date: "2020-01-06T00:00:00Z"
 draft: false
-lastmod: "2018-09-09T00:00:00Z"
-linktitle: An Example Course
+lastmod: "2020-01-06T00:00:00Z"
+linktitle: R Guide
 menu:
   example:
-    name: Overview
+    name: R guide
     weight: 1
-summary: Learn how to use Academic's docs layout for publishing online courses, software
-  documentation, and tutorials.
-title: Overview
+summary: A collection of useful R examples.
+title: R Guide
 toc: true
 type: docs
 weight: 1
 ---
 
-## Flexibility
+## Introduction
 
-This feature can be used for publishing content such as:
+There are an awful lot of things that I can do in R but require a lot of googling because I often can't remember how to do them off the top of my head. Hopefully keeping al of these examples in one place will reduce the amount of time I spend trawling the internet and with a bit of luck it might even be useful to someone else!
+
+<!--
+## Overview
 
 * **Online courses**
 * **Project or software documentation**
@@ -54,3 +56,6 @@ Or, if you are creating a software documentation site, you can rename the `cours
 ## Update the docs menu
 
 If you use the *docs* layout, note that the name of the menu in the front matter should be in the form `[menu.X]` where `X` is the folder name. Hence, if you rename the `courses/example/` folder, you should also rename the menu definitions in the front matter of files within `courses/example/` from `[menu.example]` to `[menu.<NewFolderName>]`.
+ 
+--> 
+
