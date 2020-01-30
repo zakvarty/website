@@ -14,7 +14,7 @@ type: docs
 weight: 1
 ---
 
-## Introduction
+## Introduction 
 
 There are an awful lot of things that I can do in R but require a lot of googling because I often can't remember how to do them off the top of my head. Hopefully keeping al of these examples in one place will reduce the amount of time I spend trawling the internet and with a bit of luck it might even be useful to someone else!
 

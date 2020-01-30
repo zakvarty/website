@@ -5,5 +5,9 @@
 https://zakvarty.netlify.com/* https://www.zakvarty.com/:splat 301!
 http://zakvarty.netlify.com/* https://www.zakvarty.com/:splat 301!
 
+# Redirect github domain to primary domain
+#zakvarty.github.io/* https://zakvarty.com/:splat 301!
+
+
 # Redirect http: to https:
 http://www.zakvarty.com/*    https://www.zakvarty.com/:splat  301!
