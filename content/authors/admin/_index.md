@@ -51,7 +51,7 @@ user_groups:
 
 I am a final year PhD student at Lancaster University in the United Kingdom. I am currently taking four months out from my PhD to work as a statistician with Shell in the Netherlands.
 
-My research is focused on statistical models for seismicity and combines point process models with techniques from extreme value theory. I am study as part of a Centre for Doctoral Training, which aims to develop a broader set of skills than a traditional PhD programme and focuses on producing impactful research through collaboration with industry. 
+My research is focused on statistical models for seismicity and combines point process models with techniques from extreme value theory. I study as part of a Centre for Doctoral Training, which aims to develop a broader set of skills than a traditional PhD programme and focuses on producing impactful research through collaboration with industry. 
 
 When I am not working I love to read both fiction and non-fiction, as well as to exercise, travel and bake.
 
