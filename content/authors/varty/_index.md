@@ -14,11 +14,12 @@ education:
    institution: Lancaster Univerity & The University of Western Ontario (2016)
    year: 
 email: "zdvarty@gmail.com"
-#interests:
-#- Environmental statistics 
-#- Industrial statistics
-#- Stochastic point processes
-#- Extreme value theory
+interests:
+- Stochastic point processes
+- Extreme value theory
+- Spatial statistics 
+- Bayesian inference
+- Environmental & industrial modelling
 name: Zak Varty
 organizations:
 - name: STOR-i CDT

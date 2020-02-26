@@ -6,7 +6,7 @@ active = false  # Activate this widget? true/false
 weight = 40  # Order that this section will appear.
 
 title = "Experience"
-subtitle = ""
+subtitle = "Ongoing Roles in which I am still active are marked with a solid circle."
 
 # Date format for experience
 #   Refer to https://sourcethemes.com/academic/docs/customization/#date-format
@@ -17,13 +17,6 @@ date_format = "Jan 2006"
 #   Required fields are `title`, `company`, and `date_start`.
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
-[[experience]]
-  title = "Statistics Research & Development Intern"
-  company = "Shell Global Solutions"
-  company_url = ""
-  location = "Amsterdam, NL."
-  date_start = "2019-10-01"
-  date_end = ""
 
 [[experience]]
   title = "PhD: Statistics & Operational Research"
@@ -32,6 +25,22 @@ date_format = "Jan 2006"
   location = "Lancaster, UK."
   date_start = "2016-10-01"
   date_end = ""
+  
+[[experience]]
+  title = "Postgraduate Teaching Assistant"
+  company = "Lancaster University"
+  company_url = ""
+  location = "Lancaster, UK."
+  date_start = "2015-10-01"
+  date_end = ""
+
+[[experience]]
+  title = "Statistics Research & Development Intern"
+  company = "Shell Global Solutions"
+  company_url = ""
+  location = "Amsterdam, NL."
+  date_start = "2019-10-01"
+  date_end = "2020-01-31"
 
 [[experience]]
   title = "MRes: Statistics & Operational Research"
@@ -39,15 +48,15 @@ date_format = "Jan 2006"
   company_url = ""
   location = "Lancaster, UK."
   date_start = "2016-10-01"
-  date_end = ""
+  date_end = "2017-10-01"
 
 [[experience]]
   title = "Seeds for the Future Intern"
   company = "Huawei Technologies"
-  company_url = ""
+  company_url = "https://www.huawei.com"
   location = "Beijing & Guangzhou, CHN."
   date_start = "2016-10-01"
-  date_end = ""
+  date_end = "2016-09-01"
 
 [[experience]]
   title = "Research Intern"
@@ -61,7 +70,7 @@ date_format = "Jan 2006"
   title = "MSci: Mathematics & Statistics"
   company = "Lancaster Univeristy & Univeristy of Western Ontario"
   company_url = ""
-  location = "Lancaster, UK & London CAN."
+  location = "Lancaster, UK & London, CAN."
   date_start = "2012-10-01"
   date_end = "2016-10-01"
   

@@ -66,9 +66,6 @@ I am about to start the final year of my PhD at Lancaster University. You can re
 ## PhD: Description for technical audience
 
 
-## PhD: Outputs
-
-
 My research focuses on point process models, which describe the distribution in time and space of localised events. I consider how these models can be used to describe and predict earthquakes in the Netherlands.
 
 My PhD is concerned with modelling induced seismicity by linking gas extraction to earthquake activity. Gas extraction has historically been variable with demand, both fluctuating within years and generally increasing over time. Compared to modelling tectonic earthquakes, this extraction pattern gives additional covariate information that can be drawn into the modelling procedure.

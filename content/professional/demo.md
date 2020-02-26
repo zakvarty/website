@@ -5,11 +5,11 @@
 
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
-active = false  # Activate this widget? true/false
-weight = 11  # Order that this section will appear.
+active = true  # Activate this widget? true/false
+weight = 20  # Order that this section will appear.
 
-title = "Research"
-subtitle = "PhD: General <br/>  PhD: Technical <br/> PhD: Outputs "
+title = "Teaching"
+subtitle = ""
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
@@ -50,33 +50,25 @@ subtitle = "PhD: General <br/>  PhD: Technical <br/> PhD: Outputs "
  css_class = ""
 +++
 
-## Research Interests
- I am interested in applied statistical modelling for environmental, industrial and public health applications. I use and develop statitistical methods in point process theory, extreme value analyis, and spatial statistics to inform decision-making and to answer questions of scientific interest.
+| Year    | Course                    |    Role   |
+|---------|:-------------------------|-----------:|
+| 2019-20 | DSCI485: Introduction to LaTeX   |	Co-leading short course|
+|         | MATH566: Longitudinal Data Analysis | Graduate teaching assistant|
+| 2018-19 |	STOR-i Internship: Introduction to LaTeX  |	Co-leading short course|
+|         | DSCI485: Introduction to LaTeX   |	Co-leading short course|
+|         | MATH562: Extreme Value Theory |	Graduate teaching assistant|
+|         |	MATH235: Statistics II	| Graduate teaching assistant|
+|         |	MATH240: Project Skills   |	Graduate teaching assistant|
+|         |	MATH330: Likelihood Inference   |	Graduate teaching assistant|
+|         |	MATH230: Probability II   |	Graduate teaching assistant|
+| 2017-18 |	STOR-i Internship: Research Project |	Supervisor|
+|         | STOR-i Internship: Introduction to LaTeX  |	Co-leading short course|
+|         |	DSCI485: Introduction to LaTeX   |	Co-leading short course|
+|         |	MATH235: Statistics II	   |Graduate teaching assistant|
+|         |	MATH465: Bayesian Inference   |	Graduate teaching assistant|
+|         |	MATH330: Likelihood Inference   |	Graduate teaching assistant|
+|         |	MATH230: Probability II   |	Graduate teaching assistant|
+| 2015-16 |	LAB100: Introduction to R   |	Graduate teaching assistant|
 
-I am about to start the final year of my PhD at Lancaster University. You can read more about my PhD project in the  [STOR-i Centre for Doctoral Training](https://www.lancs.ac.uk/stor-i), 
- 
-##Applications
-  
-  - Envirnment
-  - Industry
-  - Public health
-## PhD: Description for general audience
-
-
-## PhD: Description for technical audience
-
-
-## PhD: Outputs
-
-
-My research focuses on point process models, which describe the distribution in time and space of localised events. I consider how these models can be used to describe and predict earthquakes in the Netherlands.
-
-My PhD is concerned with modelling induced seismicity by linking gas extraction to earthquake activity. Gas extraction has historically been variable with demand, both fluctuating within years and generally increasing over time. Compared to modelling tectonic earthquakes, this extraction pattern gives additional covariate information that can be drawn into the modelling procedure.
-
-Models currently used for tectonic seismicity can struggle to represent induced catalogues, particularly models that include a non-constant triggering rate and after aftershock component. This is due to trade-off between parameters in the triggering and aftershock processes, as well as the inherently smaller catalogue sizes for induced events.
-
-I consider how we can make most efficient use of the limited data that is available to us and how current models can be adapted so that parameters are more identifiable and predictive performance is improved.
-
-## Outputs and Awards
 
 
