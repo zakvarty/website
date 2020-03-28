@@ -50,7 +50,7 @@ subtitle = ""
  css_class = ""
 +++
 
-I am fortunate to have had the oportunity to teach in a variety roles. These have included: one-to-one tuition for high school students, running workshops and computer labs for undergradue and postgraduate modules, delivering short courses on sceintific communication, and supervising an undergraduate research project.
+I am fortunate to have had the opportunity to teach in a variety roles. These have included: one-to-one tuition for high school students, running workshops and computer labs for undergraduate and postgraduate modules, delivering short courses on scientific communication, and supervising an undergraduate research project.
 
 Details of the material that I have help to deliver are given in the table below.
 

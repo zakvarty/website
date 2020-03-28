@@ -53,16 +53,18 @@ subtitle = "Read my age in books every year."
 
 ## 2019-20 Progress 
 
-Last updated 20 Feb 2020. 
+Last updated 28 March 2020. 
 
 
-:black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:  
+:black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:  
   :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:  
+
+__Current book:__  _The Topeka School - Ben Lerner._  
   
-__Current book:__  _Hardboiled wonderland and the end of the world - Haruki Murukami._
+__Previous book:__  _Hardboiled wonderland and the end of the world - Haruki Murukami._
 
-__Previous book:__ _The Amulet of Samarkand - Jonathan Stroud._
-
+<!-- __Previous book:__ _The Amulet of Samarkand - Jonathan Stroud._ -->
+[back catalogue and ratings coming soon...]
 <!--[*See back catalogue and comments*](reading-challenge)  -->
  
  

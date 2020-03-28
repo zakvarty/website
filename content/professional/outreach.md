@@ -52,7 +52,7 @@ subtitle = ""
 
 I have been a member of the Royal Statistical Society's Lancashire & East Cumbria local group since 2017. The group organises seminars and events to bring together those with an interest in data both within and outside of academia. I served as treasurer for the group for two years from 2017-2019. 
 
-I have also been involved in delivering univeristy open days since 2016. At these events I have delivered mini-lectures to promote statistical thinking, raise awareness of available funding, and to promote the option of studying abroad. 
+I have also been involved in delivering university open days since 2016. At these events I have delivered mini-lectures to promote statistical thinking, raise awareness of available funding, and to promote the option of studying abroad. 
 
 
 

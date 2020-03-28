@@ -53,4 +53,4 @@ user_groups:
 
 I am interested in applied statistics. In particular, I enjoy developing models and methods to provide insight in environmental and industrial applications.
 
-A short decription of my PhD research topic and past projects can be found on this page. This is followed by a summary of my teaching and outreach activities.  
+A short decription of my PhD research topic is given on this page. This is followed by a summary of my past projects, teaching and outreach activities.  

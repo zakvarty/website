@@ -48,3 +48,4 @@ user_groups:
 - Visitors
 ---
 
+Welcome to the personal page of my website! This is where I hope to keep track of all my non-statistical activities. 

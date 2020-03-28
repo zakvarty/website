@@ -67,9 +67,9 @@ A table of my past and planned attendance at conferences and workshops is given 
 | Date      | Event | Location |
 |-----------|:-----------------|------------------:|
 | Sept 2019 | Interfaces in extreme value theory workshop| Lancaster, UK. |
-| Sept 2019 | Royal statistical society conference | Belfast, UK. |
+| Sept 2019 | Royal Statistical Society conference | Belfast, UK. |
 | Aug  2019 | International statistical seismology workshop (StatSei11) | Hakone, JPN.|
-| Jul 2019 | GRASPA (Italian environmetics society)| Pescara, IT. |
+| Jul 2019 | GRASPA (Italian Environmetics Society)| Pescara, IT. |
 | Jan 2019 | STOR-i annual conference | Lancaster, UK. |
 | Jan 2018 | STOR-i annual conference | Lancaster, UK. |
 
@@ -81,6 +81,6 @@ _A review of simulated annealing techniques:_ Simulated annealing is a metahuris
 _Inference on censored networks:_ Networks are censored when existing nodes or edges are not observed. Methods for inference under different types of missingness are explored. Master's project supervised by Dr. Christopher Nemeth. [{{% staticref "pdfs/varty_2017_censored_networks.pdf" "newtab" %}}pdf{{% /staticref %}}] 
 
 _Computionally intensive methods for modelling houshold epidemics:_
-Approximate Bayesian Computation is utilised to allow inference on disease models with intractable likelihoods. Master's dissertation supervided by Prof. Peter Neal. [{{% staticref "pdfs/varty_2017_ABC_epidemics.pdf" "newtab" %}}pdf{{% /staticref %}}]
+Approximate Bayesian Computation is utilised to allow inference on disease models with intractable likelihoods. Master's dissertation supervised by Prof. Peter Neal. [{{% staticref "pdfs/varty_2017_ABC_epidemics.pdf" "newtab" %}}pdf{{% /staticref %}}]
  
 

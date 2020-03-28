@@ -56,9 +56,9 @@ Four month placement as a statistical contractor. I worked within the statistics
 
 _Huawei Technologies, CHN. (Jul - Aug 2016)_ 
 
-Fully sponsored internship in Beijing and Shenzhen. Aimed to develop knowledge of ICT infrastructure, intercultural relations and international business skills in talented STEM undergraduates.
+Fully sponsored internship in Beijing and Shenzhen for talented STEM undergraduates. Immersive education in large-scale ICT infrastructure, intercultural relations and international business management.
 
-_STOR-i CDT, Lancaster Univeristy, UK. (Jul - Sept 2015):_
+_STOR-i CDT, Lancaster University, UK. (Jul - Sept 2015):_
 
 Summer research project investigating modelling techniques to estimate pharmacokinetic parameters from small data sets.
 
