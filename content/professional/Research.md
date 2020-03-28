@@ -81,6 +81,6 @@ _A review of simulated annealing techniques:_ Simulated annealing is a metahuris
 _Inference on censored networks:_ Networks are censored when existing nodes or edges are not observed. Methods for inference under different types of missingness are explored. Master's project supervised by Dr. Christopher Nemeth. [{{% staticref "pdfs/varty_2017_censored_networks.pdf" "newtab" %}}pdf{{% /staticref %}}] 
 
 _Computionally intensive methods for modelling houshold epidemics:_
-Approximate Bayesian Computation is utilised to allow inference on disease models with intractable likelihoods. Master's dissertation supervised by Prof. Peter Neal. [{{% staticref "pdfs/varty_2017_ABC_epidemics.pdf" "newtab" %}}pdf{{% /staticref %}}]
+Approximate Bayesian Computation is utilised to allow inference on disease models with intractable likelihoods. Master's dissertation supervised by Prof. Peter Neal. [{{% staticref "pdfs/varty_2016_ABC_epidemics.pdf" "newtab" %}}pdf{{% /staticref %}}]
  
 
