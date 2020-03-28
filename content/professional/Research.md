@@ -5,11 +5,11 @@
 
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
-active = false  # Activate this widget? true/false
+active = true  # Activate this widget? true/false
 weight = 11  # Order that this section will appear.
 
 title = "Research"
-subtitle = "PhD: General <br/>  PhD: Technical <br/> PhD: Outputs "
+subtitle = ""
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
@@ -50,30 +50,37 @@ subtitle = "PhD: General <br/>  PhD: Technical <br/> PhD: Outputs "
  css_class = ""
 +++
 
-## Research Interests
- I am interested in applied statistical modelling for environmental, industrial and public health applications. I use and develop statitistical methods in point process theory, extreme value analyis, and spatial statistics to inform decision-making and to answer questions of scientific interest.
+## PhD research topic
+My research focuses on point process models, which describe the distribution in time and space of localised events. I consider how these models can be used to describe and predict earthquakes in the Netherlands. 
+This process involves modelling the link between gas extraction and the induced earthquake activity.
 
-I am about to start the final year of my PhD at Lancaster University. You can read more about my PhD project in the  [STOR-i Centre for Doctoral Training](https://www.lancs.ac.uk/stor-i), 
+Gas extraction has historically been variable with demand, which is strongly seasonal and generally increasing over time. This extraction pattern gives additional information that can be drawn into the modelling procedure, that is not typically available for tectonic earthquakes.
+
+Models developed for tectonic seismicity can struggle to represent induced catalogues accurately. This is because of the inherently smaller data sets for induced earthquakes and the variable rate of earthquakes being triggered. 
+
+I consider how we can develop or adapt earthquake models to make most efficient use of the limited available data and to improve predictive performance. 
+
+## PhD outputs
+
+A table of my past and planned attendance at conferences and workshops is given below. I plan to make the talks and posters that I have presented available here in the future. 
+
+| Date      | Event | Location |
+|-----------|:-----------------|------------------:|
+| Sept 2019 | Interfaces in extreme value theory workshop| Lancaster, UK. |
+| Sept 2019 | Royal statistical society conference | Belfast, UK. |
+| Aug  2019 | International statistical seismology workshop (StatSei11) | Hakone, JPN.|
+| Jul 2019 | GRASPA (Italian environmetics society)| Pescara, IT. |
+| Jan 2019 | STOR-i annual conference | Lancaster, UK. |
+| Jan 2018 | STOR-i annual conference | Lancaster, UK. |
+
+
+## Past projects
+
+_A review of simulated annealing techniques:_ Simulated annealing is a metahuristic technique mainly used for combinatorial optimisation. Applications, parallelisation and extensions of the technique are reviewed. [{{% staticref "pdfs/varty_2017_simulated_annealing.pdf" "newtab" %}}pdf{{% /staticref %}}]
+
+_Inference on censored networks:_ Networks are censored when existing nodes or edges are not observed. Methods for inference under different types of missingness are explored. Master's project supervised by Dr. Christopher Nemeth. [{{% staticref "pdfs/varty_2017_censored_networks.pdf" "newtab" %}}pdf{{% /staticref %}}] 
+
+_Computionally intensive methods for modelling houshold epidemics:_
+Approximate Bayesian Computation is utilised to allow inference on disease models with intractable likelihoods. Master's dissertation supervided by Prof. Peter Neal. [{{% staticref "pdfs/varty_2017_ABC_epidemics.pdf" "newtab" %}}pdf{{% /staticref %}}]
  
-##Applications
-  
-  - Envirnment
-  - Industry
-  - Public health
-## PhD: Description for general audience
-
-
-## PhD: Description for technical audience
-
-
-My research focuses on point process models, which describe the distribution in time and space of localised events. I consider how these models can be used to describe and predict earthquakes in the Netherlands.
-
-My PhD is concerned with modelling induced seismicity by linking gas extraction to earthquake activity. Gas extraction has historically been variable with demand, both fluctuating within years and generally increasing over time. Compared to modelling tectonic earthquakes, this extraction pattern gives additional covariate information that can be drawn into the modelling procedure.
-
-Models currently used for tectonic seismicity can struggle to represent induced catalogues, particularly models that include a non-constant triggering rate and after aftershock component. This is due to trade-off between parameters in the triggering and aftershock processes, as well as the inherently smaller catalogue sizes for induced events.
-
-I consider how we can make most efficient use of the limited data that is available to us and how current models can be adapted so that parameters are more identifiable and predictive performance is improved.
-
-## Outputs and Awards
-
 

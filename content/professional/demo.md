@@ -5,10 +5,10 @@
 
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
-active = true  # Activate this widget? true/false
-weight = 20  # Order that this section will appear.
+active = false  # Activate this widget? true/false
+weight = 11  # Order that this section will appear.
 
-title = "Teaching"
+title = "Research"
 subtitle = ""
 
 [design]
@@ -50,25 +50,37 @@ subtitle = ""
  css_class = ""
 +++
 
-| Year    | Course                    |    Role   |
-|---------|:-------------------------|-----------:|
-| 2019-20 | DSCI485: Introduction to LaTeX   |	Co-leading short course|
-|         | MATH566: Longitudinal Data Analysis | Graduate teaching assistant|
-| 2018-19 |	STOR-i Internship: Introduction to LaTeX  |	Co-leading short course|
-|         | DSCI485: Introduction to LaTeX   |	Co-leading short course|
-|         | MATH562: Extreme Value Theory |	Graduate teaching assistant|
-|         |	MATH235: Statistics II	| Graduate teaching assistant|
-|         |	MATH240: Project Skills   |	Graduate teaching assistant|
-|         |	MATH330: Likelihood Inference   |	Graduate teaching assistant|
-|         |	MATH230: Probability II   |	Graduate teaching assistant|
-| 2017-18 |	STOR-i Internship: Research Project |	Supervisor|
-|         | STOR-i Internship: Introduction to LaTeX  |	Co-leading short course|
-|         |	DSCI485: Introduction to LaTeX   |	Co-leading short course|
-|         |	MATH235: Statistics II	   |Graduate teaching assistant|
-|         |	MATH465: Bayesian Inference   |	Graduate teaching assistant|
-|         |	MATH330: Likelihood Inference   |	Graduate teaching assistant|
-|         |	MATH230: Probability II   |	Graduate teaching assistant|
-| 2015-16 |	LAB100: Introduction to R   |	Graduate teaching assistant|
+## PhD research topic
+My research focuses on point process models, which describe the distribution in time and space of localised events. I consider how these models can be used to describe and predict earthquakes in the Netherlands. 
+This process involves modelling the link between gas extraction and the induced earthquake activity.
+
+Gas extraction has historically been variable with demand, which is strongly seasonal and generally increasing over time. This extraction pattern gives additional information that can be drawn into the modelling procedure, that is not typically available for tectonic earthquakes.
+
+Models developed for tectonic seismicity can struggle to represent induced catalogues accurately. This is because of the inherently smaller data sets for induced earthquakes and the variable rate of earthquakes being triggered. 
+
+I consider how we can develop or adapt earthquake models to make most efficient use of the limited available data and to improve predictive performance. 
+
+## PhD outputs
+
+A table of my past and planned attendance at conferences and workshops is given below. I plan to make the talks and posters that I have presented available here in the future. 
+
+| Date      | Event | Location |
+|-----------|:-----------------|------------------:|
+| Sept 2019 | Interfaces in extreme value theory workshop| Lancaster, UK. |
+| Sept 2019 | Royal statistical society conference | Belfast, UK. |
+| Aug  2019 | International statistical seismology workshop (StatSei11) | Hakone, JPN.|
+| Jul 2019 | GRASPA (Italian environmetics society)| Pescara, IT. |
+| Jan 2019 | STOR-i annual conference | Lancaster, UK. |
+| Jan 2018 | STOR-i annual conference | Lancaster, UK. |
 
 
+## Past projects
+
+__A review of simulate annealing techniques:__ 
+Simulated annealing is a metahuristic technique mainly used for combinatorial optimisation. Applications, parallelisation and extensions of the technique are reviewed. [{{% staticref "pdfs/varty_2017_simulated_annealing.pdf" "newtab" %}}pdf{{% /staticref %}}]
+
+__Inference on censored networks:__ Networks are censored when existing nodes or edges are not observed. Methods for inference under different types of missingness are explored. Master's project supervised by Dr. Christopher Nemeth. [{{% staticref "pdfs/varty_2017_censored_networks.pdf" "newtab" %}}pdf{{% /staticref %}}] 
+
+__Computionally intensive methods for modelling houshold epidemics:__ Approximate Bayesian Computation is utilised to allow inference on disease models with intractable likelihoods. Master's dissertation supervided by Prof. Peter Neal. [{{% staticref "pdfs/varty_2017_ABC_epidemics.pdf" "newtab" %}}pdf{{% /staticref %}}]
+ 
 

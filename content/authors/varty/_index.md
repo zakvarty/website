@@ -19,7 +19,7 @@ interests:
 - Extreme value theory
 - Spatial statistics 
 - Bayesian inference
-- Environmental & industrial modelling
+- Environmental & industrial applications
 name: Zak Varty
 organizations:
 - name: STOR-i CDT
@@ -49,3 +49,8 @@ user_groups:
 - Visitors
 ---
 
+# Summary
+
+I am interested in applied statistics. In particular, I enjoy developing models and methods to provide insight in environmental and industrial applications.
+
+A short decription of my PhD research topic and past projects can be found on this page. This is followed by a summary of my teaching and outreach activities.  
