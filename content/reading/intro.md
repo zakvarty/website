@@ -6,14 +6,14 @@
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 91  # Order that this section will appear.
+weight = 2  # Order that this section will appear.
 
-title = ":book: Reading challenge:"
-subtitle = "Read my age in books every year."
+title = " "
+subtitle = ""
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "2"
+  columns = "1"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -49,22 +49,15 @@ subtitle = "Read my age in books every year."
  # CSS class.
  css_class = ""
 +++
-I _loved_ to read as a child; I was never without a book on the go. I realised
-when I was two years into my undergradute degree that I had stopped reading for fun. To counter this I challenged myself to read my age in books every year. 
 
-Since then, I have stuck to this challenge most years. I started to keep a record of what I was reading in 2016. My [reading page](../reading) acts as a personal good-reads, take a look! 
 
-## 2019-20 Progress 
+I loved to read as a child; I was never without a book on the go. When I was two years into my undergradute degree, I realised that I had stopped reading for fun. To counter this I challenged myself to read my age in books every year.
 
-:black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:  
-:black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:  
+Since then, I have stuck to this challenge most years. I started to keep a record of what I was reading in 2016. This page collates those records. 
 
-__Current book:__  _The Topeka School - Ben Lerner._  
+[Back](../personal)
+
+__Currently reading:__  _The Topeka School - Ben Lerner. (Last updated 28 March 2020)_  
   
-__Previous book:__  _Hardboiled wonderland and the end of the world - Haruki Murukami._
 
-<!-- __Previous book:__ _The Amulet of Samarkand - Jonathan Stroud._ -->
-<div align="right"> [see my reading page](../reading) </div>
-<!--[*See back catalogue and comments*](reading-challenge)  -->
- 
- 
+

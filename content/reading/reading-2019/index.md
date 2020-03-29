@@ -3,10 +3,11 @@
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 66  # Order that this section will appear.
+weight = 1  # Order that this section will appear.
 
-title = "# Annual reading challenge"
-subtitle = "2018-2019: 25 Books"
+title = ":book: Reading challenge"
+subtitle = "Read my age in books every year. "
 +++
 
 {{< gallery >}}
+
