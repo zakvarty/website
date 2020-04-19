@@ -1,0 +1,207 @@
+---
+title: Plotting in base R
+author: Zak Varty
+date: '2020-04-19'
+slug: pretty-reproducible-plots-in-base-r
+categories:
+  - R
+tags:
+  - plot
+  - base R
+subtitle: 'Making pretty plots reproducibly with base graphics'
+summary: ''
+authors: []
+lastmod: '2020-04-19T11:35:27+01:00'
+featured: no
+image:
+  caption: 'Photo by [Isaac Smith](https://unsplash.com/@isaacmsmith?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge) on Unsplash'
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+# What does it mean to work reproducibly? 
+
+The meaning of a reproducible measurement is widely known, but what makes a way of working reproducible? 
+
+> A measurement is reproducible if the investigation is repeated by another person, or by using different equipment or techniques, and the same results are obtained.
+> 
+>N.B. "the same" results implies identical, but in reality "the same" means that random error will still be present in the results.
+> [^1]
+
+
+Reproducible work-flows allow tasks to be easily redone again and again, each time producing the same output every time (maybe up to some stochastic error) with minimal human effort. 
+
+Reproducible work-flows also lend themselves to many situations where a small tweak in the inputs, methodology or outputs would otherwise require _a lot_ of hands on attention to fix. In statistics and data science these situations happen all of the time, you might want to: 
+
+ - repeatedly perform an analysis on a data set as more information becomes available;
+ - use another seed value for an analysis or optimisation;
+ - add a vital preprocessing step that you find out _just_ as you finish a project;
+ - tweak methods or fix bugs in intermediate analyses; 
+ - re-make plots to satisfy the aesthetic whims of reviewer #2.
+
+Setting up  a reproducible workflow is a huge and highly opinioned topic that is very context dependent. This post focuses on one way to produce plots in base R  so that they can be remade, adjusted or reformatted with minimal pain and suffering.
+
+# Reproducible plotting 
+
+## 1: Code your plots
+If you have gone to the substantial effort of making sure that your code and analysis have reproducible outputs, then why are you making and saving your plots by hand?  This opens you up to a world of future pain when some small detail is inevitably wrong or you get a new data set and have to spend all of that time all over again. 
+
+Making a plot in an interactive graphics device, right-clicking and saving is not a sustainable plotting method. You have gone to the trouble of writing code to make that plot, so save the plot as part of the code and save the code instead.  Need to tweak the plot? Just tweak the code and re-run it. 
+
+You can do this in R very easily by using the functions such as `pdf()`, `png()`, `jpeg()`. These open an external plotting device to which R plotting calls are diverted, so don't be surpised when nothing appears in the interactive plotting window. The resulting plot is saved to the specified file path when the function `dev.off()` is used to close the external plotting device.
+
+Suppose we want to save this plot of the average heights and weights for American women aged 30–39 in 1957.
+```{r}
+attach(women)
+plot(height,weight)
+```
+We want to save it as a pdf in a sub-folder of the current working directory (you can find this using `getwd()`) that is called figures. This can be achieved with two additional lines of code that save a lot of clicking. 
+```{r, eval=FALSE}
+attach(women)
+pdf(file =  './figures/women.pdf')
+plot(height,weight)
+dev.off()
+```
+
+## 2: Set the resolution or aspect ratio
+The font size and axis labels in base R are based on rules-of-thumb and the size of the plotting window when your graphic was created. This is why when you adjust the size of the plotting window in RStudio you can end up with very funky looking plots. 
+
+You can avoid this through a combination of two things. Firstly by setting the size of your plotting device when you open it and secondly by setting adjusting the label sizing. 
+
+```{r, eval=FALSE}
+#set dimensions for pdfs (values in inches)
+pdf(file =  './figures/women.pdf', width = 7, height = 5)
+plot(height,weight)
+dev.off()
+
+# set resolution for jpeg and png 
+# (values in pixels 'px' by default, inches 'in', 'cm'  or 'mm'),
+png(file =  './figures/women.pdf', width = 700, height = 500, units = 'px')
+plot(height,weight)
+dev.off()
+```
+Alterations to the size of plot elements can then be altered on a plotting window of fixed size. This is useful when developing plots for different contexts, e.g. plots on a poster or in a presentation have to be quickly understood from far away.
+```{r}
+plot(x = height,
+     y = weight,
+     main = 'title',
+     cex.main = 3, 
+     cex.lab = 2,
+     cex.axis = 0.5, 
+     cex = 1.5
+     )
+```
+
+
+## 3: Pick the right file type(s) 
+The file type of a plot can be as influential on its suitability as its design. Vector based graphics store each element of the plot as a separate line, curve or shaded area that are then stacked on top of one another to form the full graphic. Raster graphics store the plot as a grid of pixels, each made of a solid colour. Both formats have their relative merits. 
+
+Vector graphic formats such as pdf scale-up limitlessly and perfectly. You can put them on as large a screen as you like and they will remain sharp as ever. The files that store vecotr graphics can be very large and slow to load, particularly when there are very many individual elements the the graphic. This happens with surprising frequency, for example a scatter plot with thousands or millions of points or the many-sided polygons defining countries on a map. These heavy files are not well-suited to web-browsing and can make pages slow to load. 
+
+For raster graphic formats such as jpeg the situation is reversed. The raster image of pixel values takes very little memory to store. This leads to small file sizes and fast loading in a web browser. The price to pay for this is that the pixels which make up the image become glaringly obvious when the image is enlarged. 
+
+Other file formats such as  portable network graphics (png) and support vector graphics were designed as a comprimise to allow more scalable rasters and smaller vector files. They have their own issues with browser support and compression. [A basic summary of image file formats](http://www.student.montefiore.ulg.ac.be/~merciadri/docs/papers/image-formats.pdf) by Merciadri Luca is a useful reference document. 
+
+The take-away from this is that it is important to pick the format of your plot based on the context of how it will be used. If you have the storage space, it might be a good idea to have both vector and raster versions of plots that you will use in many settings. 
+
+## 4: Useful ink and chart junk
+
+As well as being reproducible, appropriately sized and not blurry, plot are more engaging when they are pleasant to look at and show a clear message. Edward Tufte is the Marie Kondo of displaying data and anythting that does not add value to a plot should be thanked for its service and then rapidly removed. This purge separates the plot into what Tufte calls useful ink, which is retained, and chart junk that is removed. 
+
+A stripped-down version of the plot takes a little bit more code. The transparent background is a nice touch when putting plots onto a coloured slide or poster. 
+```{r, warning=FALSE}
+#record orginal parameters
+opar <- par()
+
+# resize outer margins, remove white background
+par(mar = c(4.6, 3.1, 1.1, 1.1), bg = 'transparent')
+
+#pdf(file = 'tufte_plot.pdf')
+plot(
+  x = height,
+  y = weight,
+  bty = 'n',          # remove box around plot
+  pch = 16,           # plot with solit circles
+  las = 1,            # rotate y axis values
+  ylim = c(110,170),  # set y axis limits
+  ylab =  '',          # remove y axis label
+  xlab = 'height (inches)'
+  )
+
+# add subtitle
+mysubtitle = 'Stratified average weight (lbs) of American women aged 30-39'
+mtext(side=3, line=-1.5,  adj=0.1, cex= 1.1, mysubtitle)
+#dev.off()
+# reset plotting parameters
+par <- par(opar) 
+```
+
+
+
+# Summary
+To improve your base R plotting experience: 
+
+  1. Code your plots to help future you - no right-clicking! 
+  2. Set your aspect ratio to avoid huge axis labels.
+  3. Pick the right file type for your purpose. 
+  4. Get rid of anything that is not adding value.
+  
+_Happy plotting!_
+
+<!--
+## `set.seed` Monte Carlo and the like
+Many statistical methods rely on stocahstic simulation: permutation tests, bootstrap confidence intervals, and Markov chain Monte Carlo samplers are just a few examples. The results of these methods are going to change slightly each time they are performed. Each time the associated code is run we will get a slightly different output. 
+
+This does not bode well for creating a reproducible project. How are we supposed to tell if the variations are down to chance (the stochastic part  of the method) or down to some dodgy code or suspect logic? 
+
+A simple example of this is a bootstrap interval for the sample mean. Don't worry about the details here (of if you want to worry check out the wiki page on [bootstrapping](https://en.wikipedia.org/wiki/Bootstrapping_(statistics)).
+```{r}
+bootstrap_interval <- function(x, func, quantiles, n_boots){
+  boot_samples <- matrix( 
+    data = sample(x, n_boots*length(x), replace = TRUE), 
+    ncol = length(x), 
+    nrow = n_boots)
+
+  boot_funcs <- apply(X = boot_samples,MARGIN = 1,FUN = func)
+  
+  quantile(x = boot_funcs, probs = quantiles)
+}
+```
+
+All we need to spot is that the first time we calculate the confidence interval we get:
+```{r}
+sample <- rnorm(n = 100, mean = 0, sd = 1)
+bootstrap_interval(sample, mean, c(0.025, 0.975), n_boots = 1000)
+```
+the second time we get 
+```{r}
+bootstrap_interval(sample, mean, c(0.025, 0.975), n_boots = 1000)
+```
+and the third time we get
+```{r}
+bootstrap_interval(sample, mean, c(0.025, 0.975), n_boots = 1000)
+```
+
+We can reduce the variability between runs by increasing the number of bootstrap samples we take. The only way to get rid of all variability and make a truly reproducible example by using the same re-sampling of observed sample each time. This can be done by setting the seed of the random number generator. 
+
+```{r}
+set.seed(1234)
+bootstrap_interval(sample, mean, c(0.025, 0.975), n_boots = 1000)
+set.seed(1234) 
+bootstrap_interval(sample, mean, c(0.025, 0.975), n_boots = 1000)
+```
+
+This is really great when used correctly, but opens up a whole world of ways that things can go wrong so must be used with care. 
+
+
+
+
+In a statistical setting this might 
+Working reproducibly makes copied and modified. This has many manefestations and benefits when doing statistical work. 
+
+The most obvious is that many statistical methods rely on stochastic simulation. Permutation tests, bootstrap confidence intervals and Markov chain Monte Carlo samplers are just a few examples. The results or output of these methods are going to change each time they are performed, that is each time their code is run. 
+-->
+
+[^1]: source: https://www.gcse.com/science/reproducible.htm

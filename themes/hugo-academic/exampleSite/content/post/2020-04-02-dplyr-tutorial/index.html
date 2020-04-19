@@ -1,0 +1,207 @@
+---
+title: Dplyr Tutorial
+author: Zak Varty
+date: '2020-04-02'
+slug: dplyr-tutorial-I
+categories:
+  - R
+  - tidying-up
+tags:
+  - R
+  - tidyverse
+  - dplyr
+subtitle: 'Part I: lone tibbles.'
+summary: ''
+authors: []
+lastmod: '2020-04-02T15:43:45+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<p>The <code>dplyr</code> package provides functions for the manipulation of dataframe-like objects in R, using a syntax that is designed to be human friendly. This post introduces tibbles, why they are preferable to data frames and the key <code>dplyr</code> functions for manipulating a single tibble or data frame.</p>
+<p>I find the human friendly syntax of <code>dplyr</code> functions helpful when reading R code, but they haven’t stuck in my brain for easy writing yet. I’m hoping this writing post will help with that. If not, then at least I will have a homemade cheat sheet!</p>
+<pre class="r"><code># The following packages will be required in this blog post:
+library(&quot;tidyverse&quot;)</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.2</code></pre>
+<pre class="r"><code>library(&quot;gapminder&quot;)</code></pre>
+<p><em>All posts in my tidying up series are based on three main resources: the <a href="https://stat545.com/">STAT545 website</a> , the <a href="https://r4ds.had.co.nz/">R for data science</a> and <a href="https://adv-r.hadley.nz/">Advanced R</a> books.</em></p>
+<div id="tibbles" class="section level1">
+<h1>Tibbles</h1>
+<p>Tibbles are the tidyverse answer to data frames. They work in exactly the same way but have the following nice properties:</p>
+<p><strong>Pretty printing:</strong> When you print a large data frame in an interactive R session it will usually overrun the console with output. Printing a tibble is (by default) limited to the first ten rows. This lets you get the gist of what is going on without being overwhelmed. The number of columns displayed is also adapted to the width of the console so that the printed data is easily human readable.</p>
+<pre class="r"><code># A tibble called gapminder from the gapminder package
+gap &lt;- gapminder::gapminder
+# The same informaation but as a data.frame
+gap_df &lt;- as.data.frame(gap)</code></pre>
+<pre class="r"><code>gap</code></pre>
+<pre><code>## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # … with 1,694 more rows</code></pre>
+<p><strong>Type matching:</strong> When you use <code>[]</code> to subset a data frame, the resulting object is sometimes a data frame and sometimes a vector. Not knowing what type of object a funciton returns can cause real problems and hard to track bugs. A subset fo a tibble is always another tibble.</p>
+<p>The original object classes:</p>
+<pre class="r"><code>class(gap)
+class(gap_df)</code></pre>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;
+## [1] &quot;data.frame&quot;</code></pre>
+<p>The classes of their subsets:</p>
+<pre class="r"><code>class(gap[100:101,&#39;year&#39;])
+class(gap_df[100:101,&#39;year&#39;])</code></pre>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;
+## [1] &quot;integer&quot;</code></pre>
+<p><strong>Partial matching:</strong> Suppose we use <code>$</code> to extract the a non-existant column <code>y</code> of a <code>gap_df</code>. The name we requested <em>partially matches</em> a unique column: <code>gap_df$year</code>. This column is returned, without a warning or an error. If we try to extract a data frame column that partially matches multiple or no names, <code>NULL</code> is returned - again without warning or error.</p>
+<pre class="r"><code># data.frame behaviour
+gap_df$y[1:5]
+gap_df$c[1:5]
+gap_df$x[1:5]</code></pre>
+<pre><code>## [1] 1952 1957 1962 1967 1972
+## NULL
+## NULL</code></pre>
+<p>Tibbles guard against errors caused by partial matching, have consistent output format and warn when a extracting a non-existant column.</p>
+<pre class="r"><code># tibble behaviour
+gap$y[1:5]</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: `y`.</code></pre>
+<pre class="r"><code>gap$c[1:5]</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: `c`.</code></pre>
+<pre class="r"><code>gap$x[1:5]</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: `x`.</code></pre>
+<pre><code>## NULL
+## NULL
+## NULL</code></pre>
+<p>Tibbles are really just data frames with an extra attribute and some extra safeguards to protect us from ourselves. Nothing scary here!</p>
+</div>
+<div id="functions-for-a-single-tibble" class="section level1">
+<h1>Functions for a single tibble</h1>
+<p>The rest of this post will introduces key functions in the <code>dplyr</code> package and gives examples for working on a single tibble.</p>
+<div id="essentials-of-dplyr" class="section level2">
+<h2>essentials of <code>dplyr</code></h2>
+<p>The <a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">data transformation with dplyr cheat sheet</a> is an excellent resource, but it does contain a heck of a lot of information. A trimmed-down version is given in the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>filter()</td>
+<td>Subset rows of a tibble</td>
+</tr>
+<tr class="even">
+<td>%&gt;%</td>
+<td>Function composion. Avoids lots(of(ugly(brackets))).</td>
+</tr>
+<tr class="odd">
+<td>mutate()</td>
+<td>Add/reorder columns of a tibble</td>
+</tr>
+<tr class="even">
+<td>select()</td>
+<td>Subset columns of a tibble.</td>
+</tr>
+<tr class="odd">
+<td>arrange()</td>
+<td>Reorder rows based on one column.</td>
+</tr>
+<tr class="even">
+<td>rename()</td>
+<td>rename columns of a tibble.</td>
+</tr>
+<tr class="odd">
+<td>group_by()</td>
+<td>‘split’ tibble by levels of a factor.</td>
+</tr>
+<tr class="even">
+<td>summarise()</td>
+<td>Summary statistic on one column. <span class="math inline">\(n\)</span> inputs 1 output.</td>
+</tr>
+<tr class="odd">
+<td>summarise_<em>all/at/if</em> ()</td>
+<td>Summary statistics on multiple columns.</td>
+</tr>
+<tr class="even">
+<td>min_rank</td>
+<td>Rank inputs. Smallest in -&gt; smallest out.</td>
+</tr>
+<tr class="odd">
+<td>top_n</td>
+<td>Select top or bottom rows by rank based on wt.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="single-tibble-examples" class="section level2">
+<h2>Single tibble examples</h2>
+<p><strong>Subset rows with <code>filter</code>.</strong>
+If we want to pull out rows of a tibble we can use <code>filter</code>. This is slightly nicer to read than the equivalent base R code.</p>
+<pre class="r"><code>filter(gap, lifeExp &lt; 29)</code></pre>
+<pre><code>## # A tibble: 2 x 6
+##   country     continent  year lifeExp     pop gdpPercap
+##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;
+## 1 Afghanistan Asia       1952    28.8 8425333      779.
+## 2 Rwanda      Africa     1992    23.6 7290203      737.</code></pre>
+<p>The benefit of readability becomes more apparent when you need more a more complicated subset of the rows. To filter on multiple <em>and</em> conditions, separate each of these with a comma.</p>
+<pre class="r"><code>filter(gap, country %in% c(&#39;Rwanda&#39;,&#39;Germany&#39;, year &gt;= 1979))
+# vs 
+gap_df[gap_df$country %in% c(&#39;Rwanda&#39;,&#39;Germany&#39;)  &amp; gap_df$year &gt;= 1979,]</code></pre>
+<p><strong>Add columns with <code>mutate</code></strong>
+You can use <code>mutate</code> to construct a new column, potentially as a function of existing columns. For filtering based on complicated conditions, we can use <code>mutate</code> to construct a variable that acts as a filtering indicator.</p>
+<pre class="r"><code>mutate(gap, 
+  keep_me = (year == 1952 &amp; continent == &#39;Asia&#39;) | (country == &#39;Rwanda&#39;))</code></pre>
+<pre><code>## # A tibble: 1,704 x 7
+##    country     continent  year lifeExp      pop gdpPercap keep_me
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt; &lt;lgl&gt;  
+##  1 Afghanistan Asia       1952    28.8  8425333      779. TRUE   
+##  2 Afghanistan Asia       1957    30.3  9240934      821. FALSE  
+##  3 Afghanistan Asia       1962    32.0 10267083      853. FALSE  
+##  4 Afghanistan Asia       1967    34.0 11537966      836. FALSE  
+##  5 Afghanistan Asia       1972    36.1 13079460      740. FALSE  
+##  6 Afghanistan Asia       1977    38.4 14880372      786. FALSE  
+##  7 Afghanistan Asia       1982    39.9 12881816      978. FALSE  
+##  8 Afghanistan Asia       1987    40.8 13867957      852. FALSE  
+##  9 Afghanistan Asia       1992    41.7 16317921      649. FALSE  
+## 10 Afghanistan Asia       1997    41.8 22227415      635. FALSE  
+## # … with 1,694 more rows</code></pre>
+<p><strong>Combine operations with a pipe <code>%&gt;%</code></strong></p>
+<pre class="r"><code>gap %&gt;% 
+  mutate(keep_me = (year == 1952 &amp; continent == &#39;Asia&#39;)) %&gt;% 
+  filter(keep_me == TRUE)</code></pre>
+<pre><code>## # A tibble: 33 x 7
+##    country          continent  year lifeExp       pop gdpPercap keep_me
+##    &lt;fct&gt;            &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt; &lt;lgl&gt;  
+##  1 Afghanistan      Asia       1952    28.8   8425333      779. TRUE   
+##  2 Bahrain          Asia       1952    50.9    120447     9867. TRUE   
+##  3 Bangladesh       Asia       1952    37.5  46886859      684. TRUE   
+##  4 Cambodia         Asia       1952    39.4   4693836      368. TRUE   
+##  5 China            Asia       1952    44   556263527      400. TRUE   
+##  6 Hong Kong, China Asia       1952    61.0   2125900     3054. TRUE   
+##  7 India            Asia       1952    37.4 372000000      547. TRUE   
+##  8 Indonesia        Asia       1952    37.5  82052000      750. TRUE   
+##  9 Iran             Asia       1952    44.9  17272000     3035. TRUE   
+## 10 Iraq             Asia       1952    45.3   5441766     4130. TRUE   
+## # … with 23 more rows</code></pre>
+<p>You can also filter a <code>data.frame</code>. It will not be converted to a tibble in the process.</p>
+<pre class="r"><code>class(filter(gap_df, lifeExp &lt; 29))</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+</div>
+</div>
+<div id="summary" class="section level1">
+<h1>Summary</h1>
+</div>

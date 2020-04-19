@@ -1,0 +1,151 @@
+---
+title: Dplyr Tutorial
+author: Zak Varty
+date: '2020-04-02'
+slug: dplyr-tutorial-I
+categories:
+  - R
+  - tidying-up
+tags:
+  - R
+  - tidyverse
+  - dplyr
+subtitle: 'Part I: lone tibbles.'
+summary: ''
+authors: []
+lastmod: '2020-04-02T15:43:45+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+The `dplyr` package provides functions for the manipulation of dataframe-like objects in R, using a syntax that is designed to be human friendly. This post introduces tibbles, why they are preferable to data frames and the key `dplyr` functions for manipulating a single tibble or data frame. 
+
+I find the human friendly syntax of `dplyr` functions helpful when reading R code, but they haven't stuck in my brain for easy writing yet. I'm hoping this writing post will help with that. If not, then at least I will have a homemade cheat sheet!
+
+```{r echo=TRUE, results='hold', message=FALSE}
+# The following packages will be required in this blog post:
+library("tidyverse")
+library("gapminder")
+```
+
+_All posts in my tidying up series are based on three main resources: the [STAT545 website](https://stat545.com/) , the [R for data science](https://r4ds.had.co.nz/) and [Advanced R ](https://adv-r.hadley.nz/) books._
+
+# Tibbles
+Tibbles are the tidyverse answer to data frames. They work in exactly the same way but have the following nice properties: 
+ 
+__Pretty printing:__ When you print a large data frame in an interactive R session it will usually overrun the console with output. Printing a tibble is (by default) limited to the first ten rows. This lets you get the gist of what is going on  without being overwhelmed. The number of columns displayed is also adapted to the width of the console so that the printed data is easily human readable.
+
+```{r}
+# A tibble called gapminder from the gapminder package
+gap <- gapminder::gapminder
+# The same informaation but as a data.frame
+gap_df <- as.data.frame(gap)
+````
+
+```{r}
+gap
+```
+
+__Type matching:__ When you use `[]` to subset a data frame, the resulting object is sometimes a data frame and sometimes a vector. Not knowing what type of object a funciton returns can cause real problems and hard to track bugs. A subset fo a tibble is always another tibble. 
+
+The original object classes:
+```{r,results='hold'}
+class(gap)
+class(gap_df)
+```
+The classes of their subsets:
+```{r, results='hold'}
+class(gap[100:101,'year'])
+class(gap_df[100:101,'year'])
+```
+
+__Partial matching:__ Suppose we use `$` to extract the a non-existant column `y` of a `gap_df`. The name we requested _partially matches_ a unique column: `gap_df$year`. This column is returned, without a warning or an error. If we try to extract a data frame column that partially matches multiple or no names, `NULL` is returned - again without warning or error. 
+```{r, results= 'hold'}
+# data.frame behaviour
+gap_df$y[1:5]
+gap_df$c[1:5]
+gap_df$x[1:5]
+```
+Tibbles guard against errors caused by partial matching, have consistent output format and warn when a extracting a non-existant column.  
+
+```{r, results = 'hold', warning='hold'}
+# tibble behaviour
+gap$y[1:5]
+gap$c[1:5]
+gap$x[1:5]
+```
+ 
+Tibbles are really just data frames with an extra attribute and some extra safeguards to protect us from ourselves. Nothing scary here! 
+ 
+# Functions for a single tibble
+The rest of this post will introduces key functions in the `dplyr` package and gives examples for working on a single tibble.
+
+## essentials of `dplyr`
+The [data transformation with dplyr cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) is an excellent resource, but it does contain a heck of a lot of information. A trimmed-down version is given in the table below.
+
+| Function                | Purpose                                               |
+|-------------------------|-------------------------------------------------------|
+| filter()                | Subset rows of a tibble                               |
+| %>%                     | Function composion. Avoids lots(of(ugly(brackets))).  |
+| mutate()                | Add/reorder columns of a tibble                       |
+| select()                | Subset columns of a tibble.                           |
+| arrange()               | Reorder rows based on one column.                     |
+| rename()                | rename columns of a tibble.                           |
+| group_by()              | 'split' tibble by levels of a factor.                 |
+| summarise()             | Summary statistic on one column. $n$ inputs 1 output. |
+| summarise_*all/at/if* () | Summary statistics on multiple columns.               |
+| min_rank                | Rank inputs. Smallest in -> smallest out.             |
+| top_n                   | Select top or bottom rows by rank based on wt.        |
+
+
+## Single tibble examples
+
+__Subset rows with `filter`.__ 
+If we want to pull out rows of a tibble we can use `filter`. This is slightly nicer to read than the equivalent base R code. 
+
+```{r}
+filter(gap, lifeExp < 29)
+```
+ 
+The benefit of readability becomes more apparent when you need more a more complicated subset of the rows. To filter on multiple _and_ conditions, separate each of these with a comma. 
+
+```{r eval=FALSE, include=TRUE}
+filter(gap, country %in% c('Rwanda','Germany', year >= 1979))
+# vs 
+gap_df[gap_df$country %in% c('Rwanda','Germany')  & gap_df$year >= 1979,]
+```
+
+
+__Add columns with `mutate`__
+You can use `mutate` to construct a new column, potentially as a function of existing columns. For filtering based on complicated conditions, we can use `mutate` to construct a variable that acts as a filtering indicator. 
+
+```{r}
+mutate(gap, 
+  keep_me = (year == 1952 & continent == 'Asia') | (country == 'Rwanda'))
+```
+
+__Combine operations with a pipe `%>%`__
+
+```{r}
+gap %>% 
+  mutate(keep_me = (year == 1952 & continent == 'Asia')) %>% 
+  filter(keep_me == TRUE)
+```
+
+
+You can also filter a `data.frame`. It will not be converted to a tibble in the process. 
+```{r}
+class(filter(gap_df, lifeExp < 29))
+```
+
+
+
+
+# Summary 
+
+
+
