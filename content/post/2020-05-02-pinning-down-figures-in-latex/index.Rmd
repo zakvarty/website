@@ -1,0 +1,100 @@
+---
+title: Pinning down figures in LaTeX
+author: Zak Varty
+date: '2020-05-02'
+slug: pinning-down-figures-in-latex
+categories:
+  - LaTeX
+tags:
+  - LaTeX
+  - float
+subtitle: 'Get a grip on floating environments'
+summary: 'How to keep floats where you want them while using LaTeX'
+authors: []
+lastmod: '2020-05-02T08:03:59+01:00'
+featured: no
+image:
+  caption: 'Photo by AbsolutVision on Unsplash'
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<!-- what is LaTeX --> 
+>One quick thing up before I start. LaTeX, or more properly $\LaTeX$, is not pronounced like the rubbery matrial latex. The $TeX$ part of the word LaTeX comes from the greek $\tau \acute{\epsilon} \chi\nu\eta$ meaning art, craftsmanship, or style. The X on the end is therefore a capital chi (lowercase $\chi$), meaning that LaTeX should be pronounced "lay-tech" and rhymes with the word neck. 
+
+## $\LaTeX$: what is it and why use it?
+
+LaTeX is the standard document preparation system for scientific writing. The range of documents that can be produced using LaTeX include: short reports, academic papers, lecture notes, books, presentations and posters. When making these documents LaTeX serves a similar purpose as a word processor but with one important distinction. The content of the document (the words, equations and pictures) are treated separately from the presentation  of the document (fonts, layout, paper dimensions, referencing style). 
+
+The separation of content and style make LaTeX a very powerful tool that allows you to focus on the document content while writing and leave someone else (or future you) to worry about how to make that look appealing. This gives an easy way for academic journals or book publishers to achieve a consistent `look' or feel across all of their products.
+
+LaTeX is also particularly good for typesetting maths and for handling  references, which make it a treasure of the academic community. External references are separated from the referencing style (APA, Harvard etc.) allowing this to be easily changed. Internal references to figures, sections or chapters are separated from the order that they appear in the document. This allows you to add in an extra figure or swap the order of two chapters without the pain of spending hours re-numbering everything that follows.
+
+## The problem with floats
+LaTeX takes your content and arranges it in a (hopefully) pleasing way on the page by creating titles, headings, cross-references and a bibliography in the requested format. The location of figures and tables move around within the text so that they fit nicely on the page. These moveable elements are enclosed in floating environments such the figure or table environment.
+
+```
+  \begin{figure}[]
+    \includegraphics[width = 0.8\textwidth]{./path_to/fig.pdf}
+    \label{fig:label_text}
+    \caption{A floating figure}
+  \end{figure}
+```
+<!-- why can they be problematic ? --> 
+Floating environments can be cause a lot of trouble when using LaTex. While LaTeX is good at coming up with reasonable locations for floating environments it is by no means perfect. Sometimes floating environments can end up very far away from where they are added when writing the document. 
+
+This leads to two sources of annoyance when creating a long-form doucment such as a report or book. Firstly, it means the reader has to do lots of page-flipping to see the figure or table while reading its description. Secondly and more importantly floating environments can stray into other parts of the document, appearing in the wrong section or chapter! 
+
+In other circumstances you don't want LaTeX to be able to move your floating environments at all. On a poster for examlpe you want figures and tables to appear in exactly the place you created them, but also with the pretty formatting provided by float environments.
+
+So how do we control or fix the placement of floating environments? There are (at least) three possible ways of doing this.
+
+
+## Solution 1: float placement specifiers
+
+When creating a float environement you can add placement specifiers so say where that float is allowed to appear. These go in square brackets after beginging the float.
+
+```
+   \begin{figure}[htbp!]
+    \includegraphics[width = 0.8\textwidth]{./path_to/fig.pdf}
+    \label{fig:label_text}
+    \caption{A floating figure}
+  \end{figure}
+```
+The specifiers have the following interpretations:
+
+ - `h` float can appear in-line 'here', if it fits here;
+ - `t` float can appear in top of a page/column before any text;
+ - `b` float can appear at bottom of a page/column after all text;
+ - `p` float can appear on a new page or column section dedicated to floats;
+ - `!` relax rules on total number and size of floats on a page/column.
+  
+The order in which you give these does not carry peference, so `[tb]` will have the same effect as `[bt]`. Usually setting these to be `[htbp!]` will keep floats relatively close-by in a long form document. It doesn't stop them from flowing over into new sections or chapters though.
+
+You can learn more about the rules determining float placement in this [paper by the latex project](https://www.latex-project.org/publications/indexbytopic/2e-floats/) or this [stackoverflow post](https://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat).
+
+## Solution 2: the assertive-here specifier
+
+If you want to rigidly place a floating envirionment at a set in-line location, the `floats` LaTeX package allows this by adding the assertive here-specifier `H`. To use the `floats` package add the following line to your preamble (everything that comes before `\begin{document}`):
+``` 
+\usepackage{floats}
+```
+
+This specifier is not recommended in long documents because it can lead to some pretty funky layouts. For posters though, this can be an ideal solution. It can however be useful in a short or completed project to moving around one or two floats. 
+
+Using `H` will ensure that your floats appear in the correct section or chapter of the document but in a brittle way. Forcing float loactions so specifically can lead to a lot of awkward black space that needs to be fixed further down the line.
+
+## Solution 3: float barriers
+A more flexible and robust way to prevent floats from spilling out of their intended part of the document is to use the `placeins` package. Do this by adding the following to the preamble of your document:
+```
+\usepackage[section]{placeins}
+```
+
+This will prevent any floats from being placed ouside of the section in which they are defined. The `section` here can be lowered to `subsection`, or raised to `chapter` depending on the level of flexibility you want to allow (nb: chapters only exist when `\documentclass{book}` is used). Leave the square brackets empty to allow the usual overflow behaviour again. Larger settings usually result in better outcomes when using the `placeins` package. 
+
+To help the placement of one or two awkward plots the package also provides the `\FloatBarrier` command. This is used in-line to create an extra barrier beyond which floats can not be placed. This helps to control how far forward floats can move and a similar effect to the `H` specifier can be achieved by sandwiching a foating environmnet between two `\FloatBarrier` lines. 
+
+# Conclusion 
+I have covered three ways of avoiding LaTeX woes regarding float placement. I'm sure there are a million other solutions but these three have gotten me past every problem I've had so far!
+
