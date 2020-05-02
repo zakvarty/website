@@ -21,7 +21,7 @@ projects: []
 ---
 
 <!-- what is LaTeX --> 
->One quick thing up before I start. LaTeX, or more properly $\LaTeX$, is not pronounced like the rubbery matrial latex. The $TeX$ part of the word LaTeX comes from the greek $\tau \acute{\epsilon} \chi\nu\eta$ meaning art, craftsmanship, or style. The X on the end is therefore a capital chi (lowercase $\chi$), meaning that LaTeX should be pronounced "lay-tech" and rhymes with the word neck. 
+>One quick thing before you read all of this. LaTeX, or more properly $\LaTeX$, is not pronounced like "latex". Odd, I know. The $TeX$ part of the word LaTeX comes from the greek $\tau \acute{\epsilon} \chi\nu\eta$ meaning art, craftsmanship, or style. The X on the end is therefore a capital chi (lowercase $\chi$), meaning that LaTeX should be pronounced "lay-tech" and rhymes with the word neck. 
 
 ## $\LaTeX$: what is it and why use it?
 
