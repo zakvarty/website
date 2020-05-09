@@ -1,0 +1,206 @@
+---
+title: QQ-Plotting
+author: Zak Varty
+date: '2020-05-09'
+slug: qq-plotting
+categories:
+  - R
+  - Stats
+tags:
+  - base R
+  - Stats
+subtitle: 'Taking some pain out of QQ-plot assessment'
+summary: ''
+authors: []
+lastmod: '2020-05-09T15:26:42+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+QQ-plots can indicate whether a sample might have come from a particular distribution. Determining whether the sample and theoretical quanitles are "close enough" to one another is (in my opinion) a royal pain in the behind.
+
+## What is a QQ-plot?
+A QQ-plot is a tool to visually assess whether a set of observations are consistent with a particular probability distribution. QQ-plots can be used to check coherence with any distribution where the quantiles of that distribution can be calculated or approximated. An important special case is to test the assumption that some data are consistent with a Gaussian (normal) distribution. 
+
+Testing for Gaussianity is important because this assumption underlies many statistical methods. Here we look even more specifically at testing whether an observed sample $\{x_1,\dots,x_n\}$ is consistent with a standard Gaussian model: 
+
+$$
+ X_i \overset{i.i.d}{\sim} \mathcal{N}(0,1) \quad \text{ for } i = 1,\dots,n.
+$$
+
+
+## How to make a QQ-plot
+A QQ-plot is constructed by calculating a set of sample quantiles and the corresponding quantiles of the asssumed probability distribution. These quantiles are then plotted against one another. If the assumed distribution is reasonable then the quantiles should be approximately equal and the points in the plot should fall near the line $y=x$. This can be done easily in R for the Gaussian distribution using the function `qqnorm()` to produce the QQ-plot and the line of perfect agreement added using `qqline()`.  
+
+```{r, echo = FALSE}
+set.seed(1234)
+exp_sample <- rexp(n = 60, rate = 1) - 1
+x <- exp_sample
+```
+
+For the `r length(x)` observations stored in the vector `x` we can construct the QQ-plot as follows:
+```{r}
+# Construct QQ-plot with fixed aspect-ratio
+qqnorm(x,asp = 1) 
+# Add line toplot
+qqline(x)
+```
+Large or systematic deviation from the line indicates that the sample is not consistent with the distribution. (This is not the same as saying the sample did not come from that distribtuion; we might have just gotten very unlucky and have weird sample.)
+
+## Interpreting our QQ-plot
+It seems like the  lowest and highest quantiles might be greater than we would expect them to be. In contrast, the central quantiles are about where we would expect. This indicates that the data might come from a distribution with a lighter left-tail and heavier right-tail than the Gaussian.
+
+A common mistake when interpreting QQ-plots is to assume that all points sould fall exactly on the line $x=y$. Even if the data were truly did come from a standard Gaussian distribution, some of our sample quantiles would be larger or smaller than expected. We can show this by making QQ-plots for samples of size 60 from a $\mathcal{N}(0,1)$: 
+
+```{r chunk-label, fig.show='animate', ffmpeg.format='gif', dev='jpeg'}
+for (i in 1:50){
+  par(mfrow = c(1,2))
+  normal_sample <- rnorm(n = length(x), mean = 0, sd = 1)
+  plot(y = normal_sample,
+       x =  seq_along(x),
+       ylab = 'value, x_i', 
+       xlab = 'index, i',
+       main = paste0('Sample ', i))
+  qqnorm(normal_sample, asp = 1)
+  qqline(normal_sample)
+} 
+```
+
+In none of these samples do all of the points fall exactly on the line - even though we are looking at the true data generating distribution! Central quantiles are quite stable across samples but high and low quantiles vary a lot between samples. So how can we say whether the deviations in the tail behaviour of our sample are real, or if just due to sampling variability? Use our simulatated observations!
+
+
+## Adding quantile variability to a QQ-plot
+We now know that even if the data come from the distribution we are assessing there will be some variability around $y = x$, because we only have a sample from that distribution. We also know that the low and high quantiles will be more variable between samples because they depend on only a few of the sampled values. 
+
+How can we say if the variability of our sample quantiles is typical?
+ 1. Simulate lots of samples of the same sizeas ours that are really from a $\mathcal{N}(0,1)$ distribution 
+ 2. Work out the sample quantiles for each simulation 
+ 3. Calculate the 'typical' range of each sample quantile across all the simulations. 
+ 
+To work out what this typical range for a single quantile, for example the lower quartile $x_{0.25}$, we can construct a 95% simulation interval. To do this we first calculate the lower quartile value of each simulated sample. Then we take the 0.975- and 0.025- quantiles of all the simulated lower quartiles. These meta-quantiles (quantiles of quantiles) give us a range that describes the typical variability in the sample lower quartile for Gaussian data.
+
+This can be done for each quantile to give a set of point-wise simulation intervals that can be added to the QQ-plot. The this can be done using the `qq_norm()` function defined at the end of this post.
+
+```{r, echo = FALSE}
+#' Create Gaussian QQ-plot with bootstrap confidence intervals
+#'
+#' @param data (dbl) input data for Gaussian QQ-plot
+#' @param CI (dbl,dbl) vector giving the probabilities for the confidence interval
+#' @param n_sim (int) number of simulated data sets used to construct bootstrap interval
+#' @param plot.it (logical) plot QQ-plot and bootstrap interval?
+#' @param ...
+#'
+#' @return data frame of theoretical and observed qauntiles, and the associated intervals
+#' @export
+#'
+#' @examples y <- qq_norm(rnorm(200,mean = 10,sd = 3))
+qq_norm <- function(data, CI = c(0.025,0.975), n_sim = 2001, plot.it = TRUE, poly_count = TRUE, ...){
+  dat <- (data - mean(data))/sd(data)
+
+  n <- length(dat)
+  p <- (1:n)/(n+1)
+  theoretical <- qnorm(p)
+  observed <- sort(dat)
+
+  simdat <- matrix(data = rnorm(n_sim * n),
+                   nrow = n_sim,
+                   ncol = n)
+  sim_quants <- apply(simdat,MARGIN = 1,FUN = sort)
+  sim_ci <- apply(sim_quants,MARGIN = 1, FUN = function(x){quantile(x,CI)})
+
+  if(plot.it){
+    plot(x = theoretical, 
+         y = observed, 
+         ylim = range(sim_ci),
+         type = 'n', 
+         bty = 'n', 
+         las = 1,
+         xlab = 'Theoretical Quantiles',
+         ylab = 'Sample Quantiles',
+         ...)
+    polygon(x = c(theoretical,rev(theoretical)),
+            y =  c(sim_ci[1,], rev(sim_ci[2,])),
+            col ='lightgray',
+            border = NA)
+    in_poly <- (observed >= sim_ci[1,]) & (observed <= sim_ci[2,])
+    points(x = theoretical, y = observed, col = (!in_poly) + 1, pch = '-')
+    abline(a = 0 ,b = 1)
+    if(poly_count) title(sub = paste("proportion in interval = ", round(mean(in_poly),3)))
+  }
+
+  invisible(data.frame(theoretical,
+                    CI_low = sim_ci[1,],
+                    observed,
+                    CI_high = sim_ci[2,]))
+}
+
+```
+
+```{r}
+qq_norm(data = x,CI = c(0.025,0.975))
+```
+Using this we can see that the lowest quantiles really are greater than we would expect. The highest quantiles, however, are within the variability we would expect from normal data. 
+
+## Conclusion
+Adding a simulation interval to QQ-plots helps us to say when variations around the line $y=x$ are likely to have occurred by chance. This helps us in drawing conclusions about whether or not a sample is consistent with a generating distribution and checking model assumptions. If there are deviations, simulation intervals are be helpful in determining the location and direction of these differences.
+
+However, a cautious approach should still be taken.  Simulation intervals can be useful as part of assumption checking and model development. They do not, however, constitute a formal statistical test of compatibility between a sample and distribution. This is the trade-off for getting information on any deviations that are present. (This is because of issues related to multiple testing and to sample quantile values not being independent)
+
+## Code for `qq_norm()`:
+```{r, eval=FALSE}
+#' Create Gaussian QQ-plot with bootstrap confidence intervals
+#'
+#' @param data (dbl) input data for Gaussian QQ-plot
+#' @param CI (dbl,dbl) vector giving the probabilities for the confidence interval
+#' @param n_sim (int) number of simulated data sets used to construct bootstrap interval
+#' @param plot.it (logical) plot QQ-plot and bootstrap interval?
+#' @param ...
+#'
+#' @return data frame of theoretical and observed qauntiles, and the associated intervals
+#' @export
+#'
+#' @examples y <- qq_norm(rnorm(200,mean = 10,sd = 3))
+qq_norm <- function(data, CI = c(0.025,0.975), n_sim = 2001, plot.it = TRUE, poly_count = TRUE, ...){
+  dat <- (data - mean(data))/sd(data)
+
+  n <- length(dat)
+  p <- (1:n)/(n+1)
+  theoretical <- qnorm(p)
+  observed <- sort(dat)
+
+  simdat <- matrix(data = rnorm(n_sim * n),
+                   nrow = n_sim,
+                   ncol = n)
+  sim_quants <- apply(simdat,MARGIN = 1,FUN = sort)
+  sim_ci <- apply(sim_quants,MARGIN = 1, FUN = function(x){quantile(x,CI)})
+
+  if(plot.it){
+    plot(x = theoretical, 
+         y = observed, 
+         ylim = range(sim_ci),
+         type = 'n', 
+         bty = 'n', 
+         las = 1,
+         xlab = 'Theoretical Quantiles',
+         ylab = 'Sample Quantiles',
+         ...)
+    polygon(x = c(theoretical,rev(theoretical)),
+            y =  c(sim_ci[1,], rev(sim_ci[2,])),
+            col ='lightgray',
+            border = NA)
+    in_poly <- (observed >= sim_ci[1,]) & (observed <= sim_ci[2,])
+    points(x = theoretical, y = observed, col = (!in_poly) + 1, pch = '-')
+    abline(a = 0 ,b = 1)
+    if(poly_count) title(sub = paste("proportion in interval = ", round(mean(in_poly),3)))
+  }
+
+  invisible(data.frame(theoretical,
+                    CI_low = sim_ci[1,],
+                    observed,
+                    CI_high = sim_ci[2,]))
+}
+
+```
