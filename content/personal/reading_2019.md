@@ -56,12 +56,12 @@ Since then, I have stuck to this challenge most years. I started to keep a recor
 
 ## 2019-20 Progress 
 
-:black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:  
-:black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:  
+:black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square:
+:black_large_square: :black_large_square: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:
 
-__Current book:__  _The Topeka School - Ben Lerner._  
+__Current book:__  _The Body - Bill Bryson._  
   
-__Previous book:__  _Hardboiled wonderland and the end of the world - Haruki Murukami._
+__Previous book:__  _1Q84 (book 3) - Haruki Murakami._
 
 <!-- __Previous book:__ _The Amulet of Samarkand - Jonathan Stroud._ -->
 <div align="right"> [see my reading page](../reading) </div>

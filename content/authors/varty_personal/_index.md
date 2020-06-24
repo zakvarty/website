@@ -36,6 +36,9 @@ social:
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/zakvarty
+- icon: linkedin 
+  icon_pack: fab 
+  link: https://www.linkedin.com/in/zak-varty-b60a19b5/
 - icon: instagram
   icon_pack: fab
   link: https://www.instagram.com/zakvarty/

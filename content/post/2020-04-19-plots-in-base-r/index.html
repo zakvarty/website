@@ -162,7 +162,7 @@ bootstrap_interval(sample, mean, c(0.025, 0.975), n_boots = 1000)
 
 ```
 ##       2.5%      97.5% 
-## -0.1220662  0.2971411
+## -0.2289652  0.2103198
 ```
 the second time we get 
 
@@ -172,7 +172,7 @@ bootstrap_interval(sample, mean, c(0.025, 0.975), n_boots = 1000)
 
 ```
 ##       2.5%      97.5% 
-## -0.1103606  0.3039309
+## -0.2410768  0.2097448
 ```
 and the third time we get
 
@@ -182,7 +182,7 @@ bootstrap_interval(sample, mean, c(0.025, 0.975), n_boots = 1000)
 
 ```
 ##       2.5%      97.5% 
-## -0.1172617  0.3002374
+## -0.2394325  0.2175255
 ```
 
 We can reduce the variability between runs by increasing the number of bootstrap samples we take. The only way to get rid of all variability and make a truly reproducible example by using the same re-sampling of observed sample each time. This can be done by setting the seed of the random number generator. 
@@ -195,7 +195,7 @@ bootstrap_interval(sample, mean, c(0.025, 0.975), n_boots = 1000)
 
 ```
 ##       2.5%      97.5% 
-## -0.1112382  0.3009860
+## -0.2349460  0.2073015
 ```
 
 ```r
@@ -205,7 +205,7 @@ bootstrap_interval(sample, mean, c(0.025, 0.975), n_boots = 1000)
 
 ```
 ##       2.5%      97.5% 
-## -0.1112382  0.3009860
+## -0.2349460  0.2073015
 ```
 
 This is really great when used correctly, but opens up a whole world of ways that things can go wrong so must be used with care. 

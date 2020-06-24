@@ -57,7 +57,7 @@ Since then, I have stuck to this challenge most years. I started to keep a recor
 
 [Back](../personal)
 
-__Currently reading:__  _The Topeka School - Ben Lerner. (Last updated 28 March 2020)_  
+__Currently reading:__  _The Body - Bill Bryson. (Last updated 24 June 2020)_  
   
 
 
