@@ -56,6 +56,9 @@ Details of the material that I have help to deliver are given in the table below
 
 | Year    | Course                    |    Role   |
 |---------|:-------------------------|-----------:|
+|2020-21  | MATH562/582: Extreme Value Theory | Associate Lecturer |
+|         | MATH331: Bayesian Inference  | Graduate teaching assistant|
+|         | MATH330: Likelihood Inference | Graduate teaching assistant|
 | 2019-20 | DSCI485: Introduction to LaTeX   |	Co-leading short course|
 |         | MATH566: Longitudinal Data Analysis | Graduate teaching assistant|
 | 2018-19 |	STOR-i Internship: Introduction to LaTeX  |	Co-leading short course|
