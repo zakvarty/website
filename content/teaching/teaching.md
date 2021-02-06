@@ -4,8 +4,8 @@
 # Add more sections by duplicating this file and customizing to your requirements.
 
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
-headless = true  # This file represents a page section.
-active = false  # Activate this widget? true/false
+headless = false  # This file represents a page section.
+active = true  # Activate this widget? true/false
 weight = 20  # Order that this section will appear.
 
 title = "Teaching"
@@ -13,7 +13,7 @@ subtitle = ""
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "2"
+  columns = "1"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -50,9 +50,17 @@ subtitle = ""
  css_class = ""
 +++
 
-I am fortunate to have had the opportunity to teach in a variety roles. These have included: one-to-one tuition for high school students, running workshops and computer labs for undergraduate and postgraduate modules, delivering short courses on scientific communication, and supervising an undergraduate research project.
+I am fortunate to have had the opportunity to teach in a variety roles. These have included:
 
-Details of the material that I have help to deliver are given in the table below.
+- one-to-one tuition for high school students;
+- running workshops and computer labs for undergraduate and postgraduate modules;
+- delivering short courses on scientific communication and LaTeX; 
+- supervising an undergraduate research project; 
+- co-convenor of masters module in extreme value theory.
+
+Since October 2020 I have been working toward associate fellowship of the Higher Education Academy (learn more [here](https://www.advance-he.ac.uk/fellowship/associate-fellowship)) to further develop my teaching practice. 
+
+## Course History
 
 | Year    | Course                    |    Role   |
 |---------|:-------------------------|-----------:|
