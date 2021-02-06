@@ -1,0 +1,173 @@
+---
+title: ggplot2 example sheet
+author: Zak Varty
+date: '2020-07-11'
+slug: gg-plotting
+categories:
+  - R
+  - data viz
+tags:
+  - plot
+  - tidyverse
+  - ggplot2
+subtitle: '`{ggplot2}` examples'
+summary: ''
+authors: []
+lastmod: '2020-07-11T11:59:11+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+# Foreword 
+
+# Set up 
+The following packages will be used in this example sheet: 
+
+  - `ggplot2`
+  -  `ggthemes`
+  -  `tidyverse`
+  -  `extrafont`
+  -  `patchwork`
+  -  `cowplot`
+  -  `grid`
+  -  `gridExtra`
+  -  `ggrepel`
+  -  `reshape2`
+  -  `ggforce`
+  -  `ggridges`
+  -  `shiny`
+
+```{r}
+required_packages <-c(
+    'ggplot2',
+    'ggthemes',
+    'tidyverse',
+    'extrafont',
+    'cowplot',
+    'grid',
+    'gridExtra',
+    'ggrepel',
+    'reshape2',
+    'ggforce',
+    'ggridges',
+    'shiny',
+    'gapminder'
+  )
+# uncomment to install
+# install.packages(required_packages)
+```
+# Load data
+```{r}
+gap <- gapminder::gapminder
+dplyr::glimpse(gap)
+```
+
+# The grammar of graphics 
+The "gg" in `ggplot()` and `{ggplot2}` stands for grammar of graphics. This is a philosophy of graphics generation that builds plots while treating the following components separately: 
+
+1. **Data:** the raw information that is being used to construct the plot. 
+1. **Statistical summaries** `stat_`: Statistical summaries of the the data, this can be a simple sum, a vector of quantiles, a fitted curve or model. 
+1. **Geometries** `geom_`: the geometric shapes used to represent the data or summaries on the plotting canvas.
+1. **Aesthetics** `aes()`: Visual properties of the geometric and statistical objects such as size, shape, color or transparency.
+1. **Scales** `scale_`: maps from data to aesthetic dimensions. For example, using the range of the data to set plot width or factor values to set point colours.
+1. **Coordinate system** `coord_`: How data coordinates should be mapped onto the (rectangular) plotting canvas. 
+1. **Facets** `facet_`: How the data should be partitioned before creating a plot for each subset. The plotting equivalent of `dplyr::group_by()`.
+1. **Visual themes** `theme()`: The default aesthetics of the plot, such as the background, grid size, axes, fonts, sizes and colors. 
+
+
+# The default ggplot 
+The `{ggplot2}` package uses a very different syntax to that used to create graphics in base R. In `{ggplot2}` plots are objects which exist in your environment and plot is created when the object is called. This isn't strange or unusual if you think of the graphics device as being like the console, it is just a place that a different type of output is captured during an interactive R session. 
+```{r}
+library("ggplot2")
+info <-  summary(gap)
+g <- ggplot(data = gap, aes(x = year, y = pop))
+```
+Neither of these produce any output, which is only produced when we call the objects `īnfo` or `g`. 
+```{r}
+info
+g
+```
+We have told `ggplot()` that we will be using the gapminder data and what will be on the x and y axes. This information is stored in `g`, but we have not specified _how_ we want the data to be displayed. This is the role of a $geom_$, which can be added to the object using `+`. To prooduce a scatter plot we can use `geom_point()`. There are lots of other ready made geometries, which we will get to later.   
+```{r}
+g1 <- g + geom_point()
+g1
+```
+
+The default theme in ggplot is `theme_gray` and I am not fond of its grey background. Until we get around to making our own theme,  let's use `theme_minimal` as the default instead. 
+```{r}
+theme_set(theme_minimal())
+g1
+```
+Much better. Now that we can make a basic plot lets see how we can jazz it up a bit.
+
+## Changing point size and colour 
+The colour of the plotting points and their size can be set directly within the `geom_`: 
+```{r}
+g2 <- g1 + geom_point(color = 'orange3', size = 2)
+g2
+```
+
+To adjust other elements, check out the relevant section below.
+[](back to contents)
+
+# All of the axis things
+
+## Add or edit axis labels
+
+```{r}
+g3 <- g2 + 
+  labs(
+    x = "Year",
+    y = "Population",
+    title = "Population by country",
+    subtitle = "Every 5 years, 1952 - 2007",
+    caption = "https://www.gapminder.org/data/",
+    tag = "Fig 1."
+  )
+g3
+```
+The theme controls, amongst many other things, the formatting of the labels. Components of the theme can be modified on a plot-by-plot basis. 
+```{r}
+  g3 + 
+  theme(
+    axis.title.x = element_text(
+      family = "serif",
+      face = 'bold.italic',
+      size = 20, 
+      colour = 'orange3',
+      hjust = 0.95),
+    title =  element_text(family = 'mono'),
+  )
+```
+
+## Size and angle of tick labels 
+```{r}
+g3 + 
+  theme(
+    axis.text.y = element_text(size = 12, angle = 90, hjust = 0.5)
+  )
+```
+
+## Remove ticks and text 
+To get rid of any element, set it to `element_blank()`.
+```{r}
+g3 + 
+  labs(y = element_blank()) +
+  theme(axis.text.x = element_blank())
+```
+
+
+
+
+# Using other fonts 
+
+# Session info
+```{r}
+sessionInfo()
+```
+
+

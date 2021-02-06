@@ -50,9 +50,9 @@ user_groups:
 - Researchers
 - Visitors
 ---
-I am a final year PhD student at Lancaster University in the United Kingdom.
+I am a final year PhD student at Lancaster University in the United Kingdom.My research is focused on statistical modelling of earthquakes and combines point process models with techniques from extreme value theory. 
 
-My research is focused on statistical modelling of earthquakes and combines point process models with techniques from extreme value theory. I study as part of a Centre for Doctoral Training, which aims to develop a broader set of skills than a traditional PhD programme and focuses on producing impactful research through collaboration with industry.
+I study as part of a Centre for Doctoral Training, which aims to develop a broader set of skills than a traditional PhD programme and focuses on producing impactful research through collaboration with industry.
 
 When I am not working I love reading both fiction and non-fiction and set myself the annual challenge to read my age in books. The rest of my time is often spent on exercise, travel and baking tasty treats. 
 

@@ -4,14 +4,24 @@
 #   The weight parameter defines the order that the links will appear in.
 
 [[main]]
-  name = "Professional"  # Title of the link.
-  url = "professional/"  # Widget Page folder name.
-  weight = 1  # Position of the link in the navigation bar.
+  name = "About"  # Title of the link.
+  url = "about/"  # Widget Page folder name.
+  weight = 10  # Position of the link in the navigation bar.
 
 [[main]]
-  name = "Personal"  # Title of the link.
+  name = "Research"  # Title of the link.
   url = "personal/"  # Widget Page folder name.
-  weight = 2  # Position of the link in the navigation bar.
+  weight = 20  # Position of the link in the navigation bar.
+
+[[main]]
+  name = "Teaching"  # Title of the link.
+  url = "teaching/"  # Widget Page folder name.
+  weight = 30  # Position of the link in the navigation bar.
+
+[[main]]
+  name = "Contact"
+  url = "contact/"
+  weight = 40
 
 #[[main]]
 #  name = "Reading"  # Title of the link.
@@ -23,10 +33,10 @@
 #  url = "#hero"
 #  weight = 10
 
-[[main]]
-  name = "Posts"
-  url = "post/"
-  weight = 20
+#[[main]]
+#  name = "Posts"
+#  url = "post/"
+#  weight = 20
 
 #[[main]]
 #  name = "Projects"
@@ -38,15 +48,11 @@
 #  url = "#featured"
 #  weight = 40
 
-[[main]]
-  name = "Resources"
-  url = "resources/"
-  weight = 50
+#[[main]]
+#  name = "Resources"
+#  url = "resources/"
+#  weight = 50
 
-[[main]]
-  name = "Contact"
-  url = "contact/"
-  weight = 60
 
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.

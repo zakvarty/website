@@ -15,10 +15,10 @@ education:
    year: 
 email: "zdvarty@gmail.com"
 interests:
-- Stochastic point processes
 - Extreme value theory
-- Spatial statistics 
 - Bayesian inference
+- Stochastic point processes
+- Spatial statistics 
 - Environmental & industrial applications
 name: Zak Varty
 organizations:
@@ -52,8 +52,7 @@ user_groups:
 - Visitors
 ---
 
-# Summary
+# About Me:
 
-I am interested in applied statistics. In particular, I enjoy developing models and methods to provide insight in environmental and industrial applications.
+I am interested in developing, applying and teaching statistical methods. I particularly enjoy working on problems with strong ties to environmental and industrial application areas. 
 
-A short decription of my PhD research topic is given on this page. This is followed by a summary of my past projects, teaching and outreach activities.  
