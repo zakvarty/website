@@ -3,23 +3,23 @@ authors:
 - varty
 bio: A website for all parts of my life. Running, reading, baking, and worrying about uncertainty.
 education:
- courses:
- - course: PhD Statistics & Operational Research
-   institution: Lancaster University (2021)
-   year: 
- - course: MRes Statistics & Operational Research
-   institution: Lancaster University (2017)
-   year: 
- - course: MSci Mathematics & Statistics
-   institution: Lancaster Univerity & The University of Western Ontario (2016)
-   year: 
+#  courses:
+#  - course: PhD Statistics & Operational Research
+#    institution: Lancaster University (2021)
+#    year: 
+#  - course: MRes Statistics & Operational Research
+#    institution: Lancaster University (2017)
+#    year: 
+#  - course: MSci Mathematics & Statistics
+#    institution: Lancaster Univerity & The University of Western Ontario (2016)
+#    year: 
 email: "zdvarty@gmail.com"
 interests:
-- Extreme value theory
-- Bayesian inference
-- Stochastic point processes
-- Spatial statistics 
-- Environmental & industrial applications
+# - Extreme value theory
+# - Bayesian inference
+# - Stochastic point processes
+# - Spatial statistics 
+# - Environmental & industrial applications
 name: Zak Varty
 organizations:
 - name: STOR-i CDT
@@ -52,9 +52,4 @@ user_groups:
 - Visitors
 ---
 
-# About Me:
-
-I am interested in developing, applying and teaching statistical methods. I particularly enjoy working on problems with strong ties to environmental and industrial application areas.  
-
-You can learn more about my [research](../research) and [teaching](../teaching) activites in the other tabs ⬆. 
 

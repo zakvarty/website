@@ -10,7 +10,7 @@
 
 [[main]]
   name = "Research"  # Title of the link.
-  url = "personal/"  # Widget Page folder name.
+  url = "research/"  # Widget Page folder name.
   weight = 20  # Position of the link in the navigation bar.
 
 [[main]]

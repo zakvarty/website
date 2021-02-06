@@ -4,8 +4,8 @@
 # Add more sections by duplicating this file and customizing to your requirements.
 
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
-headless = true  # This file represents a page section.
-active = false  # Activate this widget? true/false
+headless = false  # This file represents a page section.
+active = true  # Activate this widget? true/false
 weight = 11  # Order that this section will appear.
 
 title = "Research"
@@ -13,7 +13,7 @@ subtitle = ""
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "2"
+  columns = "1"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -56,16 +56,20 @@ This process involves modelling the link between gas extraction and the induced 
 
 Gas extraction has historically been variable with demand, which is strongly seasonal and generally increasing over time. This extraction pattern gives additional information that can be drawn into the modelling procedure, that is not typically available for tectonic earthquakes.
 
-Models developed for tectonic seismicity can struggle to represent induced catalogues accurately. This is because of the inherently smaller data sets for induced earthquakes and the variable rate of earthquakes being triggered. 
-
-I consider how we can develop or adapt earthquake models to make most efficient use of the limited available data and to improve predictive performance. 
+Models developed for tectonic seismicity can struggle to represent induced catalogues accurately. This is because of the inherently smaller data sets for induced earthquakes and the variable rate of earthquakes being triggered. I consider how we can develop or adapt earthquake models to make most efficient use of the limited available data and to improve predictive performance. 
 
 ## PhD outputs
 
-A table of my past and planned attendance at conferences and workshops is given below. I plan to make the talks and posters that I have presented available here in the future. 
+### Publications 
+*Varty, Z.*, Tawn J.A., Atkinson P.M. and Bierman S. Inference for extreme earthquake mangitudes accounting for a time-varying measurement process, 2021. (Submitted, preprint on [arXiv](https://arxiv.org/abs/2102.00884))
+
+
+### Conferences and workshop contributions
 
 | Date      | Event | Location |
 |-----------|:-----------------|------------------:|
+| Jan 2021  | CRG Extremes workshop | Remote. |
+| May 2020 | STOR-i time-series and spatial statistics workshop | Remote. | 
 | Sept 2019 | Interfaces in extreme value theory workshop| Lancaster, UK. |
 | Sept 2019 | Royal Statistical Society conference | Belfast, UK. |
 | Aug  2019 | International statistical seismology workshop (StatSei11) | Hakone, JPN.|
@@ -76,11 +80,9 @@ A table of my past and planned attendance at conferences and workshops is given 
 
 ## Past projects
 
-_A review of simulated annealing techniques:_ Simulated annealing is a metahuristic technique mainly used for combinatorial optimisation. Applications, parallelisation and extensions of the technique are reviewed. [{{% staticref "pdfs/varty_2017_simulated_annealing.pdf" "newtab" %}}pdf{{% /staticref %}}]
+_A review of simulated annealing techniques:_ Simulated annealing is a metahuristic technique mainly used for combinatorial optimisation. Applications, parallelisation and extensions of the technique were reviewed.
 
-_Inference on censored networks:_ Networks are censored when existing nodes or edges are not observed. Methods for inference under different types of missingness are explored. Master's project supervised by Dr. Christopher Nemeth. [{{% staticref "pdfs/varty_2017_censored_networks.pdf" "newtab" %}}pdf{{% /staticref %}}] 
+_Inference on censored networks:_ Networks are censored when existing nodes or edges are not observed. Methods for inference under different types of missingness were explored. Master's project supervised by Dr. Christopher Nemeth.
 
 _Computionally intensive methods for modelling houshold epidemics:_
-Approximate Bayesian Computation is utilised to allow inference on disease models with intractable likelihoods. Master's dissertation supervised by Prof. Peter Neal. [{{% staticref "pdfs/varty_2016_ABC_epidemics.pdf" "newtab" %}}pdf{{% /staticref %}}]
- 
-
+Approximate Bayesian Computation was utilised to allow inference on disease models with intractable likelihoods. Master's dissertation supervised by Prof. Peter Neal.
