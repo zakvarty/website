@@ -61,7 +61,7 @@ Models developed for tectonic seismicity can struggle to represent induced catal
 ## PhD outputs
 
 ### Publications 
-*Varty, Z.*, Tawn J.A., Atkinson P.M. and Bierman S. Inference for extreme earthquake mangitudes accounting for a time-varying measurement process, 2021. (Submitted, preprint on [arXiv](https://arxiv.org/abs/2102.00884))
+*Varty, Z.*, Tawn J.A., Atkinson P.M. and Bierman S. (2021). Inference for extreme earthquake mangitudes accounting for a time-varying measurement process. (Submitted, preprint on [arXiv](https://arxiv.org/abs/2102.00884))
 
 
 ### Conferences and workshop contributions

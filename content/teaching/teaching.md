@@ -50,7 +50,7 @@ subtitle = ""
  css_class = ""
 +++
 
-I am fortunate to have had the opportunity to teach in a variety roles. These have included:
+I am fortunate to have had the opportunity to teach in a variety of roles. These have included:
 
 - one-to-one tuition for high school students;
 - running workshops and computer labs for undergraduate and postgraduate modules;
